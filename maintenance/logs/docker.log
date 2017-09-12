@@ -1,0 +1,30 @@
+==================================================
+2017-09-11 22:05:25: VPS was restarted. Starting docker containers
+Started a994c1652022
+Cleaned up 06d6d01dddc8
+Already up-to-date.
+Started Ask Around API
+2017-09-11 22:05:25: All docker containers have been started.
+==================================================
+==================================================
+2017-09-11 22:10:34: VPS was restarted. Starting docker containers
+Started a994c1652022
+Cleaned up ef27974c9f9a
+From https://github.com/NoMercy235/ask-around-api
+ * branch            master     -> FETCH_HEAD
+Already up-to-date.
+Starting askaroundapi_mongodb_1
+Creating askaroundapi_ask-around_1
+Started Ask Around API
+2017-09-11 22:10:34: All docker containers have been started.
+==================================================
+2017-09-12 00:00:01: Daily cleanup.
+"docker rmi" requires at least 1 argument(s).
+See 'docker rmi --help'.
+
+Usage:  docker rmi [OPTIONS] IMAGE [IMAGE...]
+
+Remove one or more images
+004e0d358a91d147fa52d5c1e596283067f9966c17f1162e12f09028f9474d68
+c1326b483b86c62be03ba5f5f83c084d892390f0b9eee760d9c99fbd19c9c16b
+2017-09-12 00:00:01: Finished daily cleanup.\n
