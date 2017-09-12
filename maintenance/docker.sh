@@ -35,3 +35,4 @@ echo "Started Ask Around API"
 
 echo "${currDate}: All docker containers have been started."
 echo "=================================================="
+exit 0

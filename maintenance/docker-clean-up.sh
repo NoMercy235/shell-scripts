@@ -14,3 +14,4 @@ if [[ ! -z $danglingVols ]]; then
 fi
 
 echo "${currDate}: Finished daily cleanup."
+exit 0
