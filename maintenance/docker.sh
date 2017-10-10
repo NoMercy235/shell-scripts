@@ -6,13 +6,34 @@ currDate=`date +"%Y-%m-%d %T"`
 echo "${currDate}: VPS was restarted. Starting docker containers"
 
 # TODO: cleanup all containers and start them again from a fresh image?
-containers=( a994c1652022 )
+# containers=( a994c1652022 )
+containers=( )
 
 for container in $containers; do
 	docker start $container > /dev/null 
 	echo "Started ${container}"
 done
 
+# Start Wordpress site
+# Get all related containers
+wordpressCleanUp=$(docker ps -a -f name="wordpress")
+
+# Iterate through all of them and remove them.
+for container in  ${wordpressCleanUp}; do
+	docker stop $container > /dev/null
+	docker rm $container > /dev/null
+	echo "Cleaned up ${container}"
+done
+
+# Go to the project directory
+cd /home/nomercy235/projects/wordpress
+
+# Start with docker-compose up
+docker-compose up -d > /dev/null
+echo "Started wordpress site."
+
+
+# Start Ask Around API
 # Get all containers which contain the string 'ask-around' in their name.
 askAroundCleanUp=$(docker ps -a -f name="ask-around" -q)
 
