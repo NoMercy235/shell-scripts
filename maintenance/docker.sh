@@ -16,7 +16,7 @@ done
 
 # Start Wordpress site
 # Get all related containers
-wordpressCleanUp=$(docker ps -a -f name="wordpress")
+wordpressCleanUp=$(docker ps -a -f name="wordpress" -q)
 
 # Iterate through all of them and remove them.
 for container in  ${wordpressCleanUp}; do
