@@ -12,7 +12,7 @@ if [[ $pullResult != *"Already\ up-to-date."* ]]; then
 	echo "Update has been detected. Rebuilding app..."
 	docker-compose down > /dev/null
 	docker-compose build > /dev/null
-	docker-compose up
+	docker-compose up > /dev/null
 fi
 
 echo "${currDate}: Ask Around API has been updated to the latest version."
