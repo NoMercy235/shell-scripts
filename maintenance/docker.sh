@@ -14,16 +14,20 @@ for container in $containers; do
 	echo "Started ${container}"
 done
 
+cleanup () {
+	for container in ${cleanUpStmt}; do
+		docker stop $container > /dev/null
+		docker rm $container > /dev/null
+		echo "Cleaned up ${container}"
+	done
+}
+
 # Start Wordpress site
 # Get all related containers
 wordpressCleanUp=$(docker ps -a -f name="wordpress" -q)
 
 # Iterate through all of them and remove them.
-for container in  ${wordpressCleanUp}; do
-	docker stop $container > /dev/null
-	docker rm $container > /dev/null
-	echo "Cleaned up ${container}"
-done
+cleanup wordpressCleanUp
 
 # Go to the project directory
 cd /home/nomercy235/projects/wordpress
@@ -38,11 +42,7 @@ echo "Started wordpress site."
 askAroundCleanUp=$(docker ps -a -f name="ask-around" -q)
 
 # Iterate through all of them and remove them.
-for container in ${askAroundCleanUp[@]}; do
-	docker stop $container > /dev/null
-	docker rm $container > /dev/null
-	echo "Cleaned up ${container}"
-done
+cleanup askAroundCleanUp
 
 # Go to the project directory.
 cd /home/nomercy235/projects/ask-around-api

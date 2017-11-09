@@ -1,6 +1,7 @@
 #!/bin/bash
 
 currDate=`date +"%Y-%m-%d %T"`
+echo "Trying to update Ask Around API."
 
 # Go to the project directory.
 cd /home/nomercy235/projects/ask-around-api
@@ -13,7 +14,9 @@ if [[ $pullResult != *"Already\ up-to-date."* ]]; then
 	docker-compose down > /dev/null
 	docker-compose build > /dev/null
 	docker-compose up > /dev/null
+	echo "${currDate}: Ask Around API has been updated to the latest version."
+else
+	echo "No update detected."
 fi
 
-echo "${currDate}: Ask Around API has been updated to the latest version."
 exit 0
