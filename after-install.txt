@@ -1,0 +1,31 @@
+Redshift: place it in the startup applications
+redshift -l 44.44:26.12 -b 0.92:0.85 -t 5200:4500 &
+
+Chrome:
+install from their ppa
+
+Slack:
+normal install
+
+Webstorm:
+normal install + license
+
+Unity tweak tool:
+install from store
+change workspaces
+move sidebar to bottom
+change upper right icons/data
+
+Keyboard:
+remove Ctrl Alt S shortcut
+
+vpnc: (just for Solar Winds VPN)
+sudo apt-get install vpnc
+
+Add VPNs
+
+stacer:
+normal install
+
+notification-daemon:
+apt-get install notification-daemon
