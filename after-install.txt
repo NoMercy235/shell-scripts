@@ -29,3 +29,11 @@ normal install
 
 notification-daemon:
 apt-get install notification-daemon
+
+GParted:
+sudo apt-get install gparted
+
+boot-repair:
+sudo add-apt-repository ppa:yannubuntu/boot-repair
+sudo apt-get update
+sudo apt-get install -y boot-repair && boot-repair
