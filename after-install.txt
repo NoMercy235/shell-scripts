@@ -40,3 +40,6 @@ sudo apt-get install -y boot-repair && boot-repair
 
 prevent screen from sleeping:
 sudo xset s off
+
+htop: like task manage
+sudo apt-get htop

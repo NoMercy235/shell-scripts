@@ -6,6 +6,9 @@ echo "Trying to update Ask Around API."
 # Go to the project directory.
 cd /home/nomercy235/projects/ask-around-api
 
+# Make sure that the local changes are discared.
+git reset --hard > /dev/null
+
 # Get latest version of the project.
 pullResult=$(git pull origin master)
 

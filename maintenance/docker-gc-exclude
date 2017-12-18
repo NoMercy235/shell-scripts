@@ -1,0 +1,4 @@
+node:slim
+askaroundapi_ask-around:latest
+spotify/docker-gc
+mongo:latest
