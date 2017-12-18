@@ -43,3 +43,6 @@ sudo xset s off
 
 htop: like task manage
 sudo apt-get htop
+
+compiz: fine tuning of screen and window configurations (and much more)
+sudo apt install compizconfig-settings-manager compiz-plugins-extra
