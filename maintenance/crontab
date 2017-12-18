@@ -1,0 +1,6 @@
+@reboot /home/nomercy235/shell/maintenance/log-reports.sh &> /home/nomercy235/shell/maintenance/logs-reports/reports.log 2>&1
+@reboot /home/nomercy235/shell/maintenance/docker.sh > /home/nomercy235/shell/maintenance/logs/docker.log 2>&1
+0 0 * * * /home/nomercy235/shell/maintenance/docker-clean-up.sh > /home/nomercy235/shell/maintenance/logs/docker-clean-up.log 2>&1
+0 0 * * * /home/nomercy235/shell/maintenance/ask-around-api-update.sh > /home/nomercy235/shell/maintenance/logs/ask-around-api-update.log 2>&1
+0 0 * * * /home/nomercy235/shell/maintenance/clear-auth-logs.sh > /home/nomercy235/shell/maintenance/logs/clear-auth-logs.log 2>&1
+
