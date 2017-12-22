@@ -27,7 +27,7 @@ cleanup () {
 wordpressCleanUp=$(docker ps -a -f name="wordpress" -q)
 
 # Iterate through all of them and remove them.
-cleanup wordpressCleanUp
+cleanup $wordpressCleanUp
 
 # Go to the project directory
 cd /home/nomercy235/projects/wordpress
@@ -42,7 +42,7 @@ echo "Started wordpress site."
 askAroundCleanUp=$(docker ps -a -f name="ask-around" -q)
 
 # Iterate through all of them and remove them.
-cleanup askAroundCleanUp
+cleanup $askAroundCleanUp
 
 # Go to the project directory.
 cd /home/nomercy235/projects/ask-around-api
@@ -53,6 +53,29 @@ git pull origin master
 # Start it using the docker-compose up command and place it in the background.
 docker-compose up -d > /dev/null
 echo "Started Ask Around API"
+
+
+
+# Start Ask Around Python API
+# Get all containers which contain the string 'ask-around-python' in their name.
+askAroundPythonCleanUp=$(docker ps -a -f name="ask-around-python" -q)
+
+# Iterate through all of them and remove them.
+cleanup $askAroundPythonCleanUp
+
+# Go to the project directory.
+cd /home/nomercy235/projects/ask-around-python/ask-around
+
+# This has to be done manually because the credentials are differnet
+# Get latest version of the project.
+# git pull origin master
+
+# Start it using the docker-compose up command and place it in the background.
+docker-compose up -d > /dev/null
+echo "Started Ask Around Python API"
+
+
+
 
 echo "${currDate}: All docker containers have been started."
 echo "=================================================="
