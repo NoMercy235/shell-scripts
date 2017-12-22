@@ -1,4 +1,7 @@
-// Make sure that <OUTPUT_NAME> matches the correct one (e.g. eDP-1)
+// Run xrandr to find out the name of the display you need to enforce resolution upon
+xrandr
+
+// Make sure that <OUTPUT_NAME> matches the correct name (e.g. eDP-1 in my case)
 $ xrandr --newmode "1600x900_60.00"  118.25  1600 1696 1856 2112  900 903 908 934 -hsync +vsync
 $ xrandr --addmode <OUTPUT_NAME> "1600x900_60.00"
 $ xrandr --output <OUTPUT_NAME> --mode "1600x900_60.00"
