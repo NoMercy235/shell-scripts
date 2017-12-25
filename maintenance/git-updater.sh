@@ -18,7 +18,7 @@ update () {
 
 	if [[ $pullResult != *Already\ up-to-date.* ]]; then
 		echo "Update has been detected."
-		if [[ $withDocker ]]; then
+		if $withDocker; then
 		        docker-compose down > /dev/null
 	       		docker-compose build > /dev/null
 		        docker-compose up > /dev/null
@@ -30,8 +30,8 @@ update () {
 	echo "${currDate}: Finished."
 }
 
-update "Trying to update Ask Around API." "/home/nomercy235/projects/ask-around-api" True
+update "Trying to update Ask Around API." "/home/nomercy235/projects/ask-around-api" true
 
-update "Trying to update Log Reports." "/home/nomercy235/projects/log-reports" False
+update "Trying to update Log Reports." "/home/nomercy235/projects/log-reports" false
 
 exit 0
