@@ -33,7 +33,7 @@ cleanup $wordpressCleanUp
 cd /home/nomercy235/projects/wordpress
 
 # Start with docker-compose up
-docker-compose up -d > /dev/null
+docker-compose up --build -d > /dev/null
 echo "Started wordpress site."
 
 
@@ -51,7 +51,8 @@ cd /home/nomercy235/projects/ask-around-api
 git pull origin master
 
 # Start it using the docker-compose up command and place it in the background.
-docker-compose up -d > /dev/null
+docker-compose up --build -d > /dev/null
+# /home/nomercy235/shell/maintenance/git-updater.sh
 echo "Started Ask Around API"
 
 
@@ -68,10 +69,10 @@ cd /home/nomercy235/projects/ask-around-python/ask-around
 
 # This has to be done manually because the credentials are differnet
 # Get latest version of the project.
-# git pull origin master
+git pull origin master
 
 # Start it using the docker-compose up command and place it in the background.
-docker-compose up -d > /dev/null
+docker-compose up --build -d > /dev/null
 echo "Started Ask Around Python API"
 
 
