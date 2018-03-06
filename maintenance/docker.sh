@@ -65,11 +65,14 @@ askAroundPythonCleanUp=$(docker ps -a -f name="ask-around-python" -q)
 cleanup $askAroundPythonCleanUp
 
 # Go to the project directory.
-cd /home/nomercy235/projects/ask-around-python/ask-around
+projectDir = /home/nomercy235/projects/ask-around-python/ask-around
+cd $projectDir
 
 # This has to be done manually because the credentials are differnet
 # Get latest version of the project.
-git pull origin master
+echo "Can't get the last changes from git due to need for credentials."
+echo "Please run 'git pull origin master' in '${projectDir}' to update."
+# git pull origin master
 
 # Start it using the docker-compose up command and place it in the background.
 docker-compose up --build -d > /dev/null
