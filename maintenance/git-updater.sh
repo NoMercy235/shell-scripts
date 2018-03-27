@@ -34,4 +34,6 @@ update "Trying to update Ask Around API." "/home/nomercy235/projects/ask-around-
 
 update "Trying to update Log Reports." "/home/nomercy235/projects/log-reports" false
 
+update "Trying to update Weather App." "/home/nomercy235/projects/weather-app" false
+
 exit 0
