@@ -49,3 +49,5 @@ sudo apt-get htop
 
 compiz: fine tuning of screen and window configurations (and much more)
 sudo apt install compizconfig-settings-manager compiz-plugins-extra
+
+cinnamon: maybe try to install this user interface
