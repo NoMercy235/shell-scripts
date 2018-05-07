@@ -1,3 +1,6 @@
+Download and install docker:
+./scripts/get-docker.sh
+
 Redshift: place it in the startup applications
 redshift -l 44.44:26.12 -b 0.92:0.85 -t 5200:4500 &
 
@@ -46,3 +49,5 @@ sudo apt-get htop
 
 compiz: fine tuning of screen and window configurations (and much more)
 sudo apt install compizconfig-settings-manager compiz-plugins-extra
+
+cinnamon: maybe try to install this user interface

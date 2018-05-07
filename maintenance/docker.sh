@@ -15,6 +15,10 @@ for container in $containers; do
 done
 
 cleanup () {
+	# Get all related containers
+	cleanUpStmt=$(docker ps -a -f name="$1" -q)
+
+	# Iterate through all of them and remove them.
 	for container in ${cleanUpStmt}; do
 		docker stop $container > /dev/null
 		docker rm $container > /dev/null
@@ -23,26 +27,25 @@ cleanup () {
 }
 
 # Start Wordpress site
-# Get all related containers
-wordpressCleanUp=$(docker ps -a -f name="wordpress" -q)
+echo "Wordpress site"
 
-# Iterate through all of them and remove them.
-cleanup $wordpressCleanUp
+# Execute cleanup
+cleanup "^/wordpress$"
 
 # Go to the project directory
 cd /home/nomercy235/projects/wordpress
 
 # Start with docker-compose up
-docker-compose up -d > /dev/null
+docker-compose up --build -d > /dev/null
 echo "Started wordpress site."
+echo "................................................"
 
 
 # Start Ask Around API
-# Get all containers which contain the string 'ask-around' in their name.
-askAroundCleanUp=$(docker ps -a -f name="ask-around" -q)
+echo "Ask Around API"
 
-# Iterate through all of them and remove them.
-cleanup $askAroundCleanUp
+# Cleanup
+cleanup "^/ask-around$"
 
 # Go to the project directory.
 cd /home/nomercy235/projects/ask-around-api
@@ -51,32 +54,34 @@ cd /home/nomercy235/projects/ask-around-api
 git pull origin master
 
 # Start it using the docker-compose up command and place it in the background.
-docker-compose up -d > /dev/null
+docker-compose up --build -d > /dev/null
+# /home/nomercy235/shell/maintenance/git-updater.sh
 echo "Started Ask Around API"
-
+echo "................................................"
 
 
 # Start Ask Around Python API
-# Get all containers which contain the string 'ask-around-python' in their name.
-askAroundPythonCleanUp=$(docker ps -a -f name="ask-around-python" -q)
+echo "Ask Around Python API"
 
-# Iterate through all of them and remove them.
-cleanup $askAroundPythonCleanUp
+# Cleanup
+cleanup "^/ask-around-python$"
 
 # Go to the project directory.
-cd /home/nomercy235/projects/ask-around-python/ask-around
+projectDir=/home/nomercy235/projects/ask-around-python/ask-around
+cd $projectDir
 
 # This has to be done manually because the credentials are differnet
 # Get latest version of the project.
+echo "Can't get the last changes from git due to need for credentials."
+echo "Please run 'git pull origin master' in '${projectDir}' to update."
 # git pull origin master
 
 # Start it using the docker-compose up command and place it in the background.
-docker-compose up -d > /dev/null
+docker-compose up --build -d > /dev/null
 echo "Started Ask Around Python API"
 
 
-
-
+currDate=`date +"%Y-%m-%d %T"`
 echo "${currDate}: All docker containers have been started."
 echo "=================================================="
 exit 0
