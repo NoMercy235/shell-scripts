@@ -2,18 +2,30 @@
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
-alias dimg='docker images'
-alias drun='docker run'
-alias dps='docker ps'
-alias dpull='docker pull'
-alias dinspect='docker inspect'
-alias drm='docker rm'
-alias drmi='docker rmi'
-alias dstart='docker start'
-alias dstop='docker stop'
+
+# Docker aliases
+alias dimg='docker image'
+alias dcon='docker container'
 alias dvol='docker volume'
-alias dattach='docker attach'
+alias dnet='docker network'
+alias dnod='docker node'
+alias dsvc='docker service'
+
+alias dlogs='docker logs'
+alias dinspect='docker inspect'
 alias dinfo='docker info'
-alias dexec='docker exec'
+
+alias drun='docker container run'
+alias dstart='docker container start'
+alias dstop='docker container stop'
+alias dattach='docker container attach'
+alias dexec='docker container exec'
+alias drm='docker container rm'
+alias dps='docker container ls'
+
+alias drmi='docker image rm'
+alias dpull='docker image pull'
+# Docker aliases
+
 alias tome='chown -R nomercy235 ./*'
 
