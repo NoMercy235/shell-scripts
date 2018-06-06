@@ -9,6 +9,8 @@ echo "${currDate}: Cleanup for dev/sda1."
 # For Ubuntu >= 16.04
 apt-get -y autoremove
 
+rm -rf /var/tmp/mkinitramfs_*
+
 currDate=`date +"%Y-%m-%d %T"`
 echo "${currDate}: End of cleanup."
 
