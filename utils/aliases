@@ -28,4 +28,4 @@ alias dpull='docker image pull'
 # Docker aliases
 
 alias tome='chown -R nomercy235 ./*'
-
+alias disku='du -skh'
