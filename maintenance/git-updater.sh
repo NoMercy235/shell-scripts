@@ -20,7 +20,7 @@ update () {
 		echo "Update has been detected."
 		if $withDocker; then
 		        docker-compose down > /dev/null
-	       		docker-compose build > /dev/null
+	       		docker-compose build --no-cache > /dev/null
 		        docker-compose up > /dev/null
 		fi
 	else
