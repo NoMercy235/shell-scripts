@@ -36,4 +36,6 @@ update "Trying to update Log Reports." "/home/nomercy235/projects/log-reports" f
 
 update "Trying to update Weather App." "/home/nomercy235/projects/weather-app" false
 
+update "Trying to update Employee Management." "/home/nomercy235/projects/employee-management" true
+
 exit 0
