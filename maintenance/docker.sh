@@ -36,8 +36,9 @@ cleanup "^/wordpress$"
 cd /home/nomercy235/projects/wordpress
 
 # Start with docker-compose up
-docker-compose up --build -d > /dev/null
+# docker-compose up --build -d > /dev/null
 echo "Started wordpress site."
+echo "Deprecated - no longer starting this one."
 echo "................................................"
 
 
@@ -92,6 +93,9 @@ cd $projectDir
 
 # Get latest version of the project.
 git pull origin master
+
+# Build the application
+npm run build
 
 # Start it using the docker-compose up command and place it in the background.
 docker-compose up --build -d > /dev/null
