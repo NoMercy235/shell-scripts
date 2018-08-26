@@ -6,7 +6,7 @@ function usage () {
 	Script used to automate some parts of the daily development process
 
 	Where:
-	    -i (string) the IDE used (defaults to 'webstorm'). Accepted values: 'phpstorm', 'webstorm', 'sublime'
+	    -i (string) the IDE used (defaults to 'webstorm'). Accepted values: 'phpstorm', 'webstorm', 'sublime', 'code', 'atom'
 	    -s (string) the social app (no default). If no values is present here and there is no browser source, then the URL for slack will also be opened. Accepted values: 'slack', 'franz', 'skype'
 	    -b (string) the browser used (defaults to 'google-chome'). Accepted values: 'chrome', 'google-chrome', 'firefox', 'mozilla' and 'mozilla-firefox'
 	    -a (string) browser source. This is a file which contains one URL per line that overrides the base URLs when opening the browser.
@@ -22,6 +22,13 @@ declare browserSource=
 # Joins an array into a string using the given joiner.
 function join_by { local IFS="$1"; shift; echo "$*"; }
 
+function contains_element () {
+	local e match="$1"
+	shift
+	for e; do [[ "$e" == "$match" ]] && return 0; done
+	return 1
+}
+
 while getopts "m:i:s:b:a:" opt; do
 	case $opt in
 		m)
@@ -30,7 +37,7 @@ while getopts "m:i:s:b:a:" opt; do
 			;;
 		i)
 			ide="${OPTARG}"
-			array=( "phpstorm" "webstorm" "sublime" )
+			array=( "phpstorm" "webstorm" "sublime" "code" "atom" )
 			contains_element $ide ${array[@]} || usage
 			;;
 		s)
@@ -63,13 +70,13 @@ if [[ ! -z "$browserSource" ]]; then
 	done < "$browserSource"
 	unset IFS
 else
-	urls=( "https://www.facebook.com/" "https://www.youtube.com/" "https://mail.google.com/mail/u/1/#inbox" "https://github.com/" "https://stackoverflow.com/" )
+	urls=( "https://intralinks.onelogin.com/portal/" "https://www.youtube.com/" "https://mail.google.com/mail/u/1/#inbox" "https://github.com/" "https://stackoverflow.com/" )
 fi
 
 case $browser in
 	"chrome" | "google-chrome" | "google")
 		urlList=$(join_by " " ${urls[@]})
-		google-chrome --new-window $urlList &
+		/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --new-window $urlList &
 		;;
 	"firefox" | "mozilla" | "mozilla-firefos")
 		firefox -new-tab  $urlList &
@@ -81,12 +88,27 @@ case $browser in
 esac
 
 # Start social
-[[ ! -z $social ]] && $social  &
+case $social in
+        "slack")
+                /Applications/Slack.app/Contents/MacOS/Slack
+                ;;
+        \?)
+                # TODO: error message
+                exit 1
+                ;;
+esac
 
-# Start IDE
-[[ ! -z $ide ]] && $ide &
-
-stacer &
+case $ide in
+        "code")
+                code
+                ;;
+        "atom")
+                /Applications/Atom.app/Contents/MacOS/Atom
+                ;;
+        \?)
+                # TODO: error message
+                exit 1
+                ;;
+esac
 
 exit 0
-
