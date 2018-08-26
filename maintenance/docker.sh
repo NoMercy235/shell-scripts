@@ -80,6 +80,24 @@ echo "Please run 'git pull origin master' in '${projectDir}' to update."
 docker-compose up --build -d > /dev/null
 echo "Started Ask Around Python API"
 
+# Start Employee Management
+echo "Employee Management"
+
+# Cleanup
+cleanup "^/employee-management$"
+
+# Go to the project directory.
+projectDir=/home/nomercy235/projects/employee-management
+cd $projectDir
+
+# Get latest version of the project.
+git pull origin master
+
+# Start it using the docker-compose up command and place it in the background.
+docker-compose up --build -d > /dev/null
+# /home/nomercy235/shell/maintenance/git-updater.sh
+echo "Started Employee Management"
+echo "................................................"
 
 currDate=`date +"%Y-%m-%d %T"`
 echo "${currDate}: All docker containers have been started."
