@@ -4,3 +4,4 @@
 0 0 * * * /home/nomercy235/shell/maintenance/git-updater.sh > /home/nomercy235/shell/maintenance/logs/git-updater.sh 2>&1
 0 0 * * * /home/nomercy235/shell/maintenance/clear-auth-logs.sh > /home/nomercy235/shell/maintenance/logs/clear-auth-logs.log 2>&1
 0 0 * * * /home/nomercy235/shell/maintenance/dev-sda1-clean-up.sh > /home/nomercy235/shell/maintenance/logs/dev-sda1-clean-up.log 2>&1
+0 0 * * * /home/nomercy235/shell/maintenance/disk-usage.sh > /home/nomercy235/shell/maintenance/logs/disk-usage.log 2>&1

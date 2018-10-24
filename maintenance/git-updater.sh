@@ -4,6 +4,7 @@ update () {
 	message=$1
 	path=$2
 	withDocker=$3
+        withBuild=$4
 
 	# Print the message.
 	echo $message
@@ -18,9 +19,12 @@ update () {
 
 	if [[ $pullResult != *Already\ up-to-date.* ]]; then
 		echo "Update has been detected."
+		if $withBuild; then
+			npm run build
+		fi
 		if $withDocker; then
 		        docker-compose down > /dev/null
-	       		docker-compose build > /dev/null
+	       		docker-compose build --no-cache > /dev/null
 		        docker-compose up > /dev/null
 		fi
 	else
@@ -35,5 +39,7 @@ update "Trying to update Ask Around API." "/home/nomercy235/projects/ask-around-
 update "Trying to update Log Reports." "/home/nomercy235/projects/log-reports" false
 
 update "Trying to update Weather App." "/home/nomercy235/projects/weather-app" false
+
+update "Trying to update Employee Management." "/home/nomercy235/projects/employee-management" true true
 
 exit 0
