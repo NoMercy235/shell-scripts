@@ -5,6 +5,9 @@ currDate=`date +"%Y-%m-%d %T"`
 
 echo "${currDate}: VPS was restarted. Starting docker containers"
 
+# Needed for npm context
+. "${HOME}/.bash_profile"
+
 # TODO: cleanup all containers and start them again from a fresh image?
 # containers=( a994c1652022 )
 containers=( )
@@ -102,6 +105,21 @@ docker-compose up --build -d > /dev/null
 # /home/nomercy235/shell/maintenance/git-updater.sh
 echo "Started Employee Management"
 echo "................................................"
+
+echo "Fitness Project"
+cleanup "^/fitness$"
+
+echo ">>> Backend"
+cd /home/nomercy235/projects/fitness-backend
+npm run serve > /dev/null
+
+echo ">>> Frontend"
+cd /home/nomercy235/projects/fitness-frontend
+npm run serve > /dev/null
+
+echo "Started the Fitness project"
+echo "................................................"
+
 
 currDate=`date +"%Y-%m-%d %T"`
 echo "${currDate}: All docker containers have been started."
