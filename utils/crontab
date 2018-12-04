@@ -1,0 +1,11 @@
+# The variables BASE_PATH, LOGS_PATH and LOG_REPORTS_PATH should be exported from the /root/.bash_profile script
+# Also, the /root/.bash_profile script should export nvm and source it (with .) to enable the global default version of npm from nvm
+
+@reboot . "${HOME}/.bash_profile" && "${BASE_PATH}/log-reports.sh" > $LOG_REPORTS_PATH 2>&1
+@reboot . "${HOME}/.bash_profile" && "${BASE_PATH}/docker.sh" > "${LOGS_PATH}/docker.log" 2>&1
+0 0 * * * . "${HOME}/.bash_profile" && "${BASE_PATH}/docker-clean-up.sh" > "${LOGS_PATH}/docker-clean-up.log" 2>&1
+0 0 * * * . "${HOME}/.bash_profile" && "${BASE_PATH}/git-updater.sh" > "${LOGS_PATH}/git-updater.log" 2>&1
+0 0 * * * . "${HOME}/.bash_profile" && "${BASE_PATH}/clear-auth-logs.sh" > "${LOGS_PATH}/clear-auth-logs.log" 2>&1
+0 0 * * * . "${HOME}/.bash_profile" && "${BASE_PATH}/dev-sda1-clean-up.sh" > "${LOGS_PATH}/dev-sda1-clean-up.log" 2>&1
+0 0 * * * . "${HOME}/.bash_profile" && "${BASE_PATH}/disk-usage.sh" > "${LOGS_PATH}/disk-usage.log" 2>&1
+
