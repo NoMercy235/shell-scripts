@@ -51,3 +51,7 @@ compiz: fine tuning of screen and window configurations (and much more)
 sudo apt install compizconfig-settings-manager compiz-plugins-extra
 
 cinnamon: maybe try to install this user interface
+
+zsh: https://github.com/robbyrussell/oh-my-zsh
+if the normal install gives the error "Can't change ID to root", log in as root and change the shell form there: "chsh -s /bin/zsh <username>"
+autosuggestion plugin: https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md
