@@ -8,4 +8,4 @@
 0 0 * * * . "${HOME}/.bash_profile" && "${BASE_PATH}/clear-auth-logs.sh" > "${LOGS_PATH}/clear-auth-logs.log" 2>&1
 0 0 * * * . "${HOME}/.bash_profile" && "${BASE_PATH}/dev-sda1-clean-up.sh" > "${LOGS_PATH}/dev-sda1-clean-up.log" 2>&1
 0 0 * * * . "${HOME}/.bash_profile" && "${BASE_PATH}/disk-usage.sh" > "${LOGS_PATH}/disk-usage.log" 2>&1
-
+0 0 * * * . "${HOME}/.bash_profile" && node /home/nomercy235/projects/fitness-backend/scripts/db-backup.js > "${LOGS_PATH}/fitness-db-backup.log" 2>&1
