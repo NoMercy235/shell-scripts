@@ -14,6 +14,9 @@ if [[ ! -z $danglingVols ]]; then
 fi
 
 docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v /etc:/etc:ro spotify/docker-gc > /dev/null
+
+docker image prune -a
+
 echo "Cleaned up docker's garbage."
 
 echo "${currDate}: Finished daily docker cleanup."
