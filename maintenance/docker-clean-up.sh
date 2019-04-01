@@ -15,7 +15,7 @@ fi
 
 docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v /etc:/etc:ro spotify/docker-gc > /dev/null
 
-docker image prune -a
+docker image prune -af
 
 echo "Cleaned up docker's garbage."
 
