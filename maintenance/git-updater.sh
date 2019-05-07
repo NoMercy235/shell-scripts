@@ -19,10 +19,10 @@ update () {
 
 	if [[ $pullResult != *Already\ up-to-date.* ]]; then
 		echo "Update has been detected."
-		if $withBuild; then
+		if [ ! -z $withBuild ]; then
 			npm run build
 		fi
-		if $withDocker; then
+		if [ ! -z $withDocker ]; then
 		        docker-compose down > /dev/null
 	       		docker-compose build > /dev/null
 		        docker-compose up > /dev/null
