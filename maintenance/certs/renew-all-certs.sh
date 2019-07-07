@@ -34,7 +34,7 @@ setupContainers="${restartCYOABackend} && ${restartCYOAFrontend}"
 preHook="${stopTarget}"
 postHook="${copyCertsToCYOAFrontend} && ${copyCertsToCYOABackend} && docker container start ${targetContainer}"
 
-certbot renew --pre-hook "${preHook}" --post-hook="${postHook}" --dry-run
+certbot renew --pre-hook "${preHook}" --post-hook="${postHook}"
 
 echo ""
 echo "Done renewing"
