@@ -7,6 +7,17 @@ fi
 
 cwd=$(dirname "$0")
 mainUser=$1
+. "${cwd}/utils.sh"
+
+echoTitle "Checking main user: ${mainUser}"
+userExists=$(grep -c "^${mainUser}:" /etc/passwd)
+if [ ! -z "$userExists" ]; then
+  useradd -m "$mainUser"
+  echo "User created"
+else
+  echo "User already exists"
+fi
+
 
 apt-get update -y && apt-get upgrade -y
 
