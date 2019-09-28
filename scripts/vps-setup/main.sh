@@ -6,9 +6,10 @@ if [ $(id -u) -ne 0 ]; then
 fi
 
 cwd=$(dirname "$0")
+mainUser=$1
 
 apt-get update -y && apt-get upgrade -y
 
-"${cwd}/install-dependencies.sh"
+eval "${cwd}/install-dependencies.sh $mainUser"
 "${cwd}/generate-ssh-key.sh"
 "${cwd}/setup-projects.sh"
