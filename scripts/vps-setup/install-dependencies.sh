@@ -19,3 +19,11 @@ checkDependency "git" "apt-get install -y git"
 checkDependency "curl" "apt-get install -y curl"
 checkDependency "sudo" "apt-get install -y sudo"
 checkDependency "docker" "../get-docker.sh && usermod -aG docker ${me}"
+
+# Install Oh My Zsh
+checkDependency "zsh" "apt-get install -y zsh"
+ohMyZshDir="${HOME}/.zshrc"
+if [ ! -f "$ohMyZshDir" ]; then
+  echo "Installing zsh"
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+fi
