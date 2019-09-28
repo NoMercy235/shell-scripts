@@ -49,7 +49,7 @@ checkDependency "curl" "apt-get install -y curl"
 checkDependency "sudo" "apt-get install -y sudo"
 
 echoTitle "Installing Docker"
-checkDependency "docker" "${cwd}/../get-docker.sh && usermod -aG docker ${me}"
+checkDependency "docker" "${cwd}/../get-docker.sh && usermod -aG docker ${mainUser}"
 
 # Install Oh My Zsh
 echoTitle "Installing Oh My Zsh"
