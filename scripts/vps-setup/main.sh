@@ -11,5 +11,5 @@ mainUser=$1
 apt-get update -y && apt-get upgrade -y
 
 eval "${cwd}/install-dependencies.sh $mainUser"
-"${cwd}/generate-ssh-key.sh"
+eval "${cwd}/generate-ssh-key.sh $mainUser"
 "${cwd}/setup-projects.sh"
