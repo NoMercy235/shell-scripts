@@ -5,8 +5,10 @@ if [ $(id -u) -ne 0 ]; then
   exit
 fi
 
+cwd=$(dirname "$0")
+
 apt-get update -y && apt-get upgrade -y
 
-./install-dependencies.sh
-./generate-ssh-key.sh
-./setup-projects.sh
+"${cwd}/install-dependencies.sh"
+"${cwd}/generate-ssh-key.sh"
+"${cwd}/setup-projects.sh"

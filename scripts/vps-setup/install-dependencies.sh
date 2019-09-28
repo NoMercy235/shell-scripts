@@ -1,6 +1,7 @@
 #!/bin/bash
 
 me=$(whoami)
+cwd=$(dirname "$0")
 
 function checkDependency {
   commandToCheck=$1
@@ -30,6 +31,6 @@ if [ ! -f "$ohMyZshDir" ]; then
 fi
 
 # Setup crontab
-crontabFilePath="${PWD}/../../utils/crontab"
+crontabFilePath="${cwd}/../../utils/crontab"
 checkDependency "crontab" "apt-get install -y cron"
 crontab "$crontabFilePath"
