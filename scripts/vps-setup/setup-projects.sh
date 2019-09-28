@@ -12,3 +12,6 @@ git clone git@github.com:NoMercy235/shell-scripts.git
 mkdir -p "${projectsDir}/cyoa"
 git clone git@github.com:NoMercy235/cyoa-frontend.git cyoa/cyoa-frontend
 git clone git@github.com:NoMercy235/cyoa-backend.git cyoa/cyoa-backend
+
+source ~/.bashrc
+npm -v
