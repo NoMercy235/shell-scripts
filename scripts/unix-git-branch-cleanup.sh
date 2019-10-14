@@ -13,5 +13,6 @@ cd $path
 echo "Untracked the following branches from origin:"
 git prune remote origin
 
+# On MacOS remove the "-r" argument from the xargs command.
 echo "Deleted the following branches:"
 git branch -vv | grep ': gone]'|  grep -v "\*" | awk '{ print $1; }' | xargs -r git branch -d
