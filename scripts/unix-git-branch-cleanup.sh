@@ -6,9 +6,12 @@ echo ""
 
 cd $path
 
-branches=$(git branch -vv | grep ': gone]'|  grep -v "\*" | awk '{ print $1; }')
-echo "$branches"
-echo ""
+# branches=$(git branch -vv | grep ': gone]'|  grep -v "\*" | awk '{ print $1; }')
+# echo "$branches"
+# echo ""
 
+echo "Untracked the following branches from origin:"
+git prune remote origin
+
+echo "Deleted the following branches:"
 git branch -vv | grep ': gone]'|  grep -v "\*" | awk '{ print $1; }' | xargs -r git branch -d
-
