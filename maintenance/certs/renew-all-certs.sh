@@ -17,12 +17,11 @@ startTarget=
 
 # If there is a target container, it must be restarted
 if [[ ! -z $targetContainer ]]; then
-  echo "Sunt in if"
   stopTarget="docker container stop ${targetContainer}"
   startTarget="docker container start ${targetContainer}"
 fi
 
-pathToCopyCerts="/home/nomercy235/shell/maintenance/certs/copy-certs-to-location.sh www.cyoatta.xyz"
+pathToCopyCerts="/home/nomercy235/shell/maintenance/certs/copy-certs-to-location.sh rigamo.xyz"
 copyCertsToCYOAFrontend="${pathToCopyCerts} /home/nomercy235/projects/cyoa/cyoa-frontend/certs/"
 copyCertsToCYOABackend="${pathToCopyCerts} /home/nomercy235/projects/cyoa/cyoa-backend/certs/"
 
