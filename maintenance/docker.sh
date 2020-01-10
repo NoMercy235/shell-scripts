@@ -106,21 +106,6 @@ docker-compose up --build -d > /dev/null
 echo "Started Employee Management"
 echo "................................................"
 
-echo "Fitness Project"
-cleanup "^/fitness$"
-
-echo ">>> Backend"
-cd /home/nomercy235/projects/fitness-backend
-npm run serve > /dev/null
-
-echo ">>> Frontend"
-cd /home/nomercy235/projects/fitness-frontend
-npm run serve > /dev/null
-
-echo "Started the Fitness project"
-echo "................................................"
-
-
 currDate=`date +"%Y-%m-%d %T"`
 echo "${currDate}: All docker containers have been started."
 echo "=================================================="
