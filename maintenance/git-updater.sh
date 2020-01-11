@@ -34,7 +34,8 @@ update () {
 	echo "${currDate}: Finished."
 }
 
-update "Trying to update Ask Around API." "/home/nomercy235/projects/ask-around-api" true
+# Stopping the update on this one since it's on bitbucket and it requires credentials
+# update "Trying to update Ask Around API." "/home/nomercy235/projects/ask-around-api" true
 
 update "Trying to update Log Reports." "/home/nomercy235/projects/log-reports" false
 

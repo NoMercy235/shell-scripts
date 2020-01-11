@@ -1,19 +1,29 @@
+# Edit this file to introduce tasks to be run by cron.
+# 
+# Each task to run has to be defined through a single line
+# indicating with different fields when the task will be run
+# and what command to run for the task
+# 
+# To define the time you can provide concrete values for
+# minute (m), hour (h), day of month (dom), month (mon),
+# and day of week (dow) or use '*' in these fields (for 'any').# 
+# Notice that tasks will be started based on the cron's system
+# daemon's notion of time and timezones.
+# 
+# Output of the crontab jobs (including errors) is sent through
+# email to the user the crontab file belongs to (unless redirected).
+# 
+# For example, you can run a backup of all your user accounts
+# at 5 a.m every week with:
+# 0 5 * * 1 tar -zcf /var/backups/home.tgz /home/
+# 
+# For more information see the manual pages of crontab(5) and cron(8)
+# 
+# m h  dom mon dow   command
+
 # The variables BASE_PATH, LOGS_PATH and LOG_REPORTS_PATH should be exported from the /root/.bash_profile script
 # Also, the /root/.bash_profile script should export nvm and source it (with .) to enable the global default version of npm from nvm
 
-# Old version - sourcing the bash_profile for every cron job.
-SHELL=/bin/bash
-BASH_ENV="${HOME}/.bash_profile"
-@reboot . "${HOME}/.bash_profile" && "${BASE_PATH}/log-reports.sh" > $LOG_REPORTS_PATH 2>&1
-@reboot . "${HOME}/.bash_profile" && "${BASE_PATH}/docker.sh" > "${LOGS_PATH}/docker.log" 2>&1
-0 0 * * * . "${HOME}/.bash_profile" && "${BASE_PATH}/docker-clean-up.sh" > "${LOGS_PATH}/docker-clean-up.log" 2>&1
-0 0 * * * . "${HOME}/.bash_profile" && "${BASE_PATH}/git-updater.sh" > "${LOGS_PATH}/git-updater.log" 2>&1
-0 0 * * * . "${HOME}/.bash_profile" && "${BASE_PATH}/clear-auth-logs.sh" > "${LOGS_PATH}/clear-auth-logs.log" 2>&1
-0 0 * * *  "${BASE_PATH}/dev-sda1-clean-up.sh" > "${LOGS_PATH}/dev-sda1-clean-up.log" 2>&1
-0 0 * * * "${BASE_PATH}/disk-usage.sh" > "${LOGS_PATH}/disk-usage.log" 2>&1
-0 0 * * *  node -v > "${HOME}/debug.txt" && npm -v > "${HOME}/debug2.txt" && node /home/nomercy235/projects/fitness-backend/scripts/db-backup.js > "${LOGS_PATH}/fitness-db-backup.log" 2>&1
-
-# New version - no sourcing of the bash_profile since it's done above the cron jobs.
 SHELL=/bin/bash
 BASH_ENV="${HOME}/.bash_profile"
 @reboot "${BASE_PATH}/log-reports.sh" > $LOG_REPORTS_PATH 2>&1
@@ -23,4 +33,12 @@ BASH_ENV="${HOME}/.bash_profile"
 0 0 * * * "${BASE_PATH}/clear-auth-logs.sh" > "${LOGS_PATH}/clear-auth-logs.log" 2>&1
 0 0 * * * "${BASE_PATH}/dev-sda1-clean-up.sh" > "${LOGS_PATH}/dev-sda1-clean-up.log" 2>&1
 0 0 * * * "${BASE_PATH}/disk-usage.sh" > "${LOGS_PATH}/disk-usage.log" 2>&1
-0 0 * * *  node /home/nomercy235/projects/fitness-backend/scripts/db-backup.js > "${LOGS_PATH}/fitness-db-backup.log" 2>&1
+0 0 * * * "${BASE_PATH}/certs/renew-all-certs.sh" > "${LOGS_PATH}/renew-all-certs.log" 2>&1
+
+# @reboot /home/nomercy235/shell/maintenance/log-reports.sh > /home/nomercy235/shell/maintenance/logs-reports/reports.log 2>&1
+# @reboot source ~/.bashrc && nvm use 10.12.0 && /home/nomercy235/shell/maintenance/docker.sh > /home/nomercy235/shell/maintenance/logs/docker.log 2>&1
+# 0 0 * * * /home/nomercy235/shell/maintenance/docker-clean-up.sh > /home/nomercy235/shell/maintenance/logs/docker-clean-up.log 2>&1
+# 0 0 * * * /home/nomercy235/shell/maintenance/git-updater.sh > /home/nomercy235/shell/maintenance/logs/git-updater.sh 2>&1
+# 0 0 * * * /home/nomercy235/shell/maintenance/clear-auth-logs.sh > /home/nomercy235/shell/maintenance/logs/clear-auth-logs.log 2>&1
+# 0 0 * * * /home/nomercy235/shell/maintenance/dev-sda1-clean-up.sh > /home/nomercy235/shell/maintenance/logs/dev-sda1-clean-up.log 2>&1
+# 0 0 * * * /home/nomercy235/shell/maintenance/disk-usage.sh > /home/nomercy235/shell/maintenance/logs/disk-usage.log 2>&1
